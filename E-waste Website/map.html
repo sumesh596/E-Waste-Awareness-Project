@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="width=device-width, initial-scale=1.0">
+    <title>Map Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {
+        'packages': ['geochart'],
+        'maps': { 'default': 'US' }
+      });
+      google.charts.setOnLoadCallback(drawFirstMap);
+
+      function drawFirstMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['State', 'E-Waste (Tons)'],
+          ['Alabama', 118070],
+          ['Alaska', 17234],
+          ['Arizona', 168060],
+          ['Arkansas', 70770],
+          ['California', 929148],
+          ['Colorado', 135682],
+          ['Connecticut', 84739],
+          ['Delaware', 23263],
+          ['Florida', 506147],
+          ['Georgia', 251729],
+          ['Hawaii', 34198],
+          ['Idaho', 43218],
+          ['Illinois', 301093],
+          ['Indiana', 159459],
+          ['Iowa', 74973],
+          ['Kansas', 69040],
+          ['Kentucky', 105887],
+          ['Louisiana', 109457],
+          ['Maine', 32015],
+          ['Maryland', 145164],
+          ['Massachusetts', 165203],
+          ['Michigan', 236817],
+          ['Minnesota', 134102],
+          ['Mississippi', 69590],
+          ['Missouri', 144640],
+          ['Montana', 25479],
+          ['Nebraska', 46095],
+          ['Nevada', 72958],
+          ['New Hampshire', 32371],
+          ['New Jersey', 218291],
+          ['New Mexico', 49761],
+          ['New York', 474729],
+          ['North Carolina', 245325],
+          ['North Dakota', 18308],
+          ['Ohio', 277287],
+          ['Oklahoma', 93044],
+          ['Oregon', 99575],
+          ['Pennsylvania', 305563],
+          ['Rhode Island', 25788],
+          ['South Carolina', 120282],
+          ['South Dakota', 20836],
+          ['Tennessee', 162404],
+          ['Texas', 708419],
+          ['Utah', 76882],
+          ['Vermont', 15112],
+          ['Virginia', 202837],
+          ['Washington', 251729],
+          ['West Virginia', 42152],
+          ['Wisconsin', 138502],
+          ['Wyoming', 13555]
+        ]);
+
+        var options = {
+          region: 'US',
+          resolution: 'provinces',
+          backgroundColor: '#f0f0f0',
+          datalessRegionColor: '#f8f8f8',
+          colorAxis: {
+            colors: ['#00FF00', '#FFFF00', '#FF0000'],
+          },
+          legend: { textStyle: { color: 'black', fontSize: 14 } },
+          tooltip: {
+            isHtml: true,
+            trigger: 'focus',
+            textStyle: { color: '#333', fontSize: 14 },
+          },
+          displayMode: 'regions',
+          enableRegionInteractivity: true,
+          magnifyingGlass: { borderColor: '#000000', zoomFactor: 1.5 }
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+        chart.draw(data, options);
+      }
+
+      function drawSecondMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['State', 'Landfill E-Waste (Tons)'],
+          ['Alabama', 2196.661516],
+          ['Alaska', 1723.468850],
+          ['Arizona', 3361.205940],
+          ['Arkansas', 1952.298317],
+          ['California', 2486.015359],
+          ['Colorado', 2679.399720],
+          ['Connecticut', 1619.333470],
+          ['Delaware', 3446.937700],
+          ['Florida', 1792.643168],
+          ['Georgia', 1746.046156],
+          ['Hawaii', 919.1833867],
+          ['Idaho', 4454.112887],
+          ['Illinois', 1270.684894],
+          ['Indiana', 1225.579346],
+          ['Iowa', 1607.614852],
+          ['Kansas', 1558.158791],
+          ['Kentucky', 1928.961626],
+          ['Louisiana', 1806.110808],
+          ['Maine', 2866.859857],
+          ['Maryland', 2574.545917],
+          ['Massachusetts', 2811.996699],
+          ['Michigan', 2237.059942],
+          ['Minnesota', 1304.759434],
+          ['Mississippi', 1745.014833],
+          ['Missouri', 1653.011984],
+          ['Montana', 1090.678818],
+          ['Nebraska', 1538.473542],
+          ['Nevada', 4144.931046],
+          ['New Hampshire', 2344.808457],
+          ['New Jersey', 2653.768220],
+          ['New Mexico', 1268.032786],
+          ['New York', 1563.344631],
+          ['North Carolina', 1082.191963],
+          ['North Dakota', 1227.696497],
+          ['Ohio', 1945.362250],
+          ['Oklahoma', 2130.655144],
+          ['Oregon', 1412.703614],
+          ['Pennsylvania', 1797.056601],
+          ['Rhode Island', 2194.757546],
+          ['South Carolina', 1064.879897],
+          ['South Dakota', 7874.775139],
+          ['Tennessee', 691.4065675],
+          ['Texas', 5770.211862],
+          ['Utah', 4752.476364],
+          ['Vermont', 5719.324380],
+          ['Virginia', 933.3284513],
+          ['Washington', 1426.530929],
+          ['West Virginia', 8189.076454],
+          ['Wisconsin', 1740.257943],
+          ['Wyoming', 4606.590640]
+        ]);
+
+        var options = {
+          region: 'US',
+          resolution: 'provinces',
+          backgroundColor: '#f0f0f0',
+          datalessRegionColor: '#f8f8f8',
+          colorAxis: {
+            colors: ['#00FF00', '#FFFF00', '#FF0000'],
+          },
+          legend: { textStyle: { color: 'black', fontSize: 14 } },
+          tooltip: {
+            isHtml: true,
+            trigger: 'focus',
+            textStyle: { color: '#333', fontSize: 14 },
+          },
+          displayMode: 'regions',
+          enableRegionInteractivity: true,
+          magnifyingGlass: { borderColor: '#000000', zoomFactor: 1.5 }
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+        chart.draw(data, options);
+      }
+
+      function showMap(mapType) {
+        if (mapType == 'totalEwaste') {
+          drawFirstMap();
+        } else if (mapType == 'landfillEwaste') {
+          drawSecondMap();
+        }
+      }
+    </script>
+
+</head>
+<body onload="showMap('totalEwaste')">
+    <header>
+        <nav>
+            <a href="main.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="map.html">Map</a>
+            <a href="quiz.html">Quiz</a>
+        </nav>
+    </header>
+    <main>
+        <h1>E-Waste Statistics by State</h1>
+
+        <div class="tab-container">
+            <div class="tab active" id="ewasteTab" onclick="showMap('totalEwaste'); activateTab('ewasteTab')">Total E-Waste Map</div>
+            <div class="tab" id="landfillTab" onclick="showMap('landfillEwaste'); activateTab('landfillTab')">E-Waste per Landfill Map</div>
+        </div>
+
+        <div class="map-container">
+            <div id="regions_div" style="width: 900px; height: 500px;"></div>
+        </div>
+    </main>
+    <footer>
+        <p>HACS Capstone Project</p>
+    </footer>
+
+    <script>
+      function activateTab(tabId) {
+        document.getElementById('ewasteTab').classList.remove('active');
+        document.getElementById('landfillTab').classList.remove('active');
+        document.getElementById(tabId).classList.add('active');
+      }
+    </script>
+</body>
+</html>
