@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="map.html">Map</a>
+            <a href="quiz.html">Quiz</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Test Your Knowledge About E-Waste</h1>
+
+        
+        <section id="quiz-section">
+            <h2>Quiz</h2>
+
+            
+            <div class="question-container">
+                <p class="question-text">1. What is e-waste?</p>
+                <div class="answer-options">
+                    <input type="radio" id="q1a" name="q1" value="a">
+                    <label for="q1a">Plastic bottles and paper</label>
+
+                    <input type="radio" id="q1b" name="q1" value="b">
+                    <label for="q1b">Discarded electronic devices</label>
+
+                    <input type="radio" id="q1c" name="q1" value="c">
+                    <label for="q1c">Food waste</label>
+                </div>
+            </div>
+
+           
+            <div class="question-container">
+                <p class="question-text">2. Why is recycling e-waste important?</p>
+                <div class="answer-options">
+                    <input type="radio" id="q2a" name="q2" value="a">
+                    <label for="q2a">It helps reduce environmental pollution and conserve resources</label>
+
+                    <input type="radio" id="q2b" name="q2" value="b">
+                    <label for="q2b">It’s not important</label>
+
+                    <input type="radio" id="q2c" name="q2" value="c">
+                    <label for="q2c">To increase landfill waste</label>
+                </div>
+            </div>
+
+            
+            <div class="question-container">
+                <p class="question-text">3. Which toxic materials are commonly found in e-waste?</p>
+                <div class="answer-options">
+                    <input type="radio" id="q3a" name="q3" value="a">
+                    <label for="q3a">Gold and silver</label>
+
+                    <input type="radio" id="q3b" name="q3" value="b">
+                    <label for="q3b">Lead and mercury</label>
+
+                    <input type="radio" id="q3c" name="q3" value="c">
+                    <label for="q3c">Sand and glass</label>
+                </div>
+            </div>
+
+            
+            <div class="question-container">
+                <p class="question-text">4. How much e-waste is generated globally each year?</p>
+                <div class="answer-options">
+                    <input type="radio" id="q4a" name="q4" value="a">
+                    <label for="q4a">5 million metric tons</label>
+
+                    <input type="radio" id="q4b" name="q4" value="b">
+                    <label for="q4b">Over 50 million metric tons</label>
+
+                    <input type="radio" id="q4c" name="q4" value="c">
+                    <label for="q4c">500,000 metric tons</label>
+                </div>
+            </div>
+
+            
+            <div class="question-container">
+                <p class="question-text">5. What percentage of global e-waste is properly recycled?</p>
+                <div class="answer-options">
+                    <input type="radio" id="q5a" name="q5" value="a">
+                    <label for="q5a">20%</label>
+
+                    <input type="radio" id="q5b" name="q5" value="b">
+                    <label for="q5b">50%</label>
+
+                    <input type="radio" id="q5c" name="q5" value="c">
+                    <label for="q5c">80%</label>
+                </div>
+            </div>
+
+           
+            <button onclick="checkAnswers()">Submit</button>
+
+            
+            <p id="quiz-result"></p>
+        </section>
+    </main>
+    <footer>
+        <p>HACS Capstone Project</p>
+    </footer>
+
+    <script>
+        function checkAnswers() {
+            const answers = {
+                q1: 'b', 
+                q2: 'a', 
+                q3: 'b', 
+                q4: 'b', 
+                q5: 'a'  
+            };
+
+            let score = 0;
+            for (let question in answers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected && selected.value === answers[question]) {
+                    score++;
+                }
+            }
+
+            document.getElementById('quiz-result').innerText = `You scored ${score} out of 5.`;
+        }
+    </script>
+</body>
+</html>
